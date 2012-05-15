@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <app:DetailClass xmlns="http://www.w3.org/1999/xhtml"
                xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app">
-    <div class="container">
-        Your Application {appName} is running!
+
+    <div class="main">
+
     </div>
+
 </app:DetailClass>
