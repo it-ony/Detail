@@ -1,18 +1,37 @@
 <?xml version="1.0"?>
 <app:DetailClass xmlns="http://www.w3.org/1999/xhtml"
-                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:data="sprd.data">
+                 xmlns:js="js.core"
+                 xmlns:ui="js.ui"
+                 xmlns:app="app"
+                 xmlns:data="js.data"
+                 xmlns:sprdData="sprd.data"
+                 xmlns:view="app.view"
+                 xmlns:sprdView="sprd.view">
 
     <js:Injection cid="injection">
-        <data:SprdApiDataSource cid="api"
+        <sprdData:SprdApiDataSource cid="api"
                 endPoint="http://api.spreadshirt.net/api" gateway="api/v1" />
     </js:Injection>
 
-    <ui:ItemsView items="{shop.productTypes}">
+    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="2" />
+
+    <h1>Tag!</h1>
+
+    <a onclick="showSelected">Show Selected</a>
+
+    <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}">
         <js:Template name="item">
             <li>
                 {$item.name}
+                <view:productTypeImage productType="{$item}" width="50" height="50"></view:productTypeImage>
             </li>
         </js:Template>
-    </ui:ItemsView>
+    </ui:SelectionView>
+
+    <a onclick="prevPage">Prev</a>
+    <a onclick="nextPage">Next</a>
+
+    <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"></sprdView:SizeSelector>
+    <sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"></sprdView:ColorSelector>
 
 </app:DetailClass>

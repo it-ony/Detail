@@ -5,8 +5,36 @@ define(
         return Application.inherit({
 
             initialize:function () {
-                this.set('shop', null);
+
+
+	            var self = this;
+
+	            this.set('shop', null);
+	            this.set('selectedProductType', null);
+	            this.set('selectedSize', null);
+	            this.set('selectedColor', null);
+
+	            this.bind('change:selectedProductType', function(evt) {
+		            console.log('e',evt);
+		            if (evt.$) {
+			            self.$.colorSelector.set('productType', null);
+			            evt.$.fetch(null, function(err, productType) {
+				            self.$.colorSelector.set('productType', productType);
+			            });
+		            }
+	            });
+
+	            this.bind('change:selectedProductType', function(evt) {
+		            if (evt.$) {
+			            self.$.sizeSelector.set('productType', null);
+			            evt.$.fetch(null, function(err, productType) {
+				            self.$.sizeSelector.set('productType', productType);
+				        });
+		            }
+	            });
+
             },
+
             /***
              * Starts the application
              * @param parameter
@@ -29,10 +57,7 @@ define(
 		            })
 		            .seq(function(cb) {
 
-			            // fethc productTypes
-			            console.log('s', shop);
-			            shop.$.productTypes.fetch(null, cb);
-			            console.log(1);
+			            self.$.productTypePage.showPage(0, cb);
 
 	                })
 		            .exec(function(err, res) {
@@ -42,7 +67,28 @@ define(
 
 		            });
 
-            }
+            },
+
+	        nextPage : function() {
+
+		        this.$.productTypePage.nextPage();
+
+	        },
+
+	        prevPage : function() {
+
+		        this.$.productTypePage.previousPage();
+
+	        },
+
+	        showSelected : function() {
+
+		        console.log(this.$);
+
+	        }
+
+
+
         });
     }
 );
