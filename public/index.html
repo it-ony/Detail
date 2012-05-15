@@ -22,7 +22,9 @@
     rAppid.bootStrap("app/Detail.xml", "config.json",
             function (err, systemManager, application) {
                 if (!err) {
-                    application.start(null, function (err) {
+                    application.start({
+                        shopId: 205909
+                    }, function (err) {
                         if (!err) {
                             application.render(document.body);
                         } else {

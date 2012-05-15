@@ -1,13 +1,11 @@
 define(
-    ["js/core/Application"],
-    function (Application) {
+    ["js/core/Application", "js/data/Model"],
+    function (Application, Model) {
 
         return Application.inherit({
-            /**
-             *  initializes the application variables
-             */
+
             initialize:function () {
-                this.set('appName','Detail');
+                this.set('shop', null);
             },
             /***
              * Starts the application
@@ -15,10 +13,21 @@ define(
              * @param callback
              */
             start:function (parameter, callback) {
-                // false - disables autostart
-                this.callBase(parameter, false);
 
-                callback();
+                var self = this,
+                    shop = this.$.api.createModel(Model, parameter.shopId, "Shop");
+
+                this.set('shop', shop);
+
+                // fetch shop
+                shop.fetch(null, function(err) {
+                    if (err) {
+                        callback(err);
+                    } else {
+                        self.start.baseImplementation.call(self, parameter, callback);
+                    }
+                });
+
             }
         });
     }
