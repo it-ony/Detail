@@ -7,4 +7,12 @@
                 endPoint="http://api.spreadshirt.net/api" gateway="api/v1" />
     </js:Injection>
 
+    <ui:ItemsView items="{shop.productTypes}">
+        <js:Template name="item">
+            <li>
+                {$item.name}
+            </li>
+        </js:Template>
+    </ui:ItemsView>
+
 </app:DetailClass>

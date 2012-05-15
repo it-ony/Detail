@@ -1,6 +1,6 @@
 define(
-    ["js/core/Application", "js/data/Model"],
-    function (Application, Model) {
+    ["js/core/Application", "js/data/Model", "flow"],
+    function (Application, Model, flow) {
 
         return Application.inherit({
 
@@ -19,14 +19,28 @@ define(
 
                 this.set('shop', shop);
 
-                // fetch shop
-                shop.fetch(null, function(err) {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        self.start.baseImplementation.call(self, parameter, callback);
-                    }
-                });
+	            flow()
+		            .seq(function(cb) {
+
+			            // fetch shop
+			            shop.fetch(null, cb);
+			            console.log(0);
+
+		            })
+		            .seq(function(cb) {
+
+			            // fethc productTypes
+			            console.log('s', shop);
+			            shop.$.productTypes.fetch(null, cb);
+			            console.log(1);
+
+	                })
+		            .exec(function(err, res) {
+
+			            console.log(err, shop);
+			            self.start.baseImplementation.call(self, parameter, callback);
+
+		            });
 
             }
         });
