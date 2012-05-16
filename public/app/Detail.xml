@@ -10,10 +10,11 @@
 
     <js:Injection cid="injection">
         <sprdData:SprdApiDataSource cid="api"
-                endPoint="http://api.spreadshirt.net/api" gateway="api/v1" />
+                                    endPoint="http://api.spreadshirt.net/api" gateway="api/v1"/>
+        <sprdData:ImageService/>
     </js:Injection>
 
-    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="2" />
+    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="2"/>
 
     <h1>Tag!</h1>
 
@@ -23,7 +24,7 @@
         <js:Template name="item">
             <li>
                 {$item.name}
-                <view:productTypeImage productType="{$item}" width="50" height="50"></view:productTypeImage>
+                <!--<view:productTypeImage productType="{$item}" width="50" height="50"></view:productTypeImage>-->
             </li>
         </js:Template>
     </ui:SelectionView>
@@ -31,7 +32,11 @@
     <a onclick="prevPage">Prev</a>
     <a onclick="nextPage">Next</a>
 
-    <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"></sprdView:SizeSelector>
-    <sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"></sprdView:ColorSelector>
+    <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>
+    <sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"/>
+
+    <sprdView:ProductViewer cid="productViewer" product="{product}"/>
+
+    <!--<sprdView:ProductViewSelector product="{product}"/>-->
 
 </app:DetailClass>

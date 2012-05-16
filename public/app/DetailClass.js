@@ -1,6 +1,6 @@
 define(
-    ["js/core/Application", "js/data/Model", "flow"],
-    function (Application, Model, flow) {
+    ["js/core/Application", "js/data/Model", "flow", "sprd/model/Product"],
+    function (Application, Model, flow, Product) {
 
         return Application.inherit({
 
@@ -13,25 +13,25 @@ define(
 	            this.set('selectedProductType', null);
 	            this.set('selectedSize', null);
 	            this.set('selectedColor', null);
+                this.set('product', new Product());
 
 	            this.bind('change:selectedProductType', function(evt) {
-		            console.log('e',evt);
 		            if (evt.$) {
 			            self.$.colorSelector.set('productType', null);
-			            evt.$.fetch(null, function(err, productType) {
+                        self.$.sizeSelector.set('productType', null);
+                        self.$.product.set('productType', evt.$);
+
+                        evt.$.fetch(null, function(err, productType) {
 				            self.$.colorSelector.set('productType', productType);
+                            self.$.sizeSelector.set('productType', productType);
+                            self.$.productViewer.set('view', productType.$.views.at(0));
 			            });
 		            }
 	            });
 
-	            this.bind('change:selectedProductType', function(evt) {
-		            if (evt.$) {
-			            self.$.sizeSelector.set('productType', null);
-			            evt.$.fetch(null, function(err, productType) {
-				            self.$.sizeSelector.set('productType', productType);
-				        });
-		            }
-	            });
+                this.bind('change:selectedColor', function(evt) {
+                    self.$.product.set('appearance', evt.$);
+                });
 
             },
 
