@@ -13,7 +13,7 @@
         <sprdData:ImageService/>
     </js:Injection>
 
-    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="10"/>
+    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="3"/>
 
     <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}">
         <js:Template name="item">
