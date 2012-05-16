@@ -14,6 +14,7 @@ define(
 	            this.set('selectedSize', null);
 	            this.set('selectedColor', null);
                 this.set('product', new Product());
+                this.set('currentView', null);
 
 	            this.bind('change:selectedProductType', function(evt) {
 		            if (evt.$) {
@@ -24,7 +25,7 @@ define(
                         evt.$.fetch(null, function(err, productType) {
 				            self.$.colorSelector.set('productType', productType);
                             self.$.sizeSelector.set('productType', productType);
-                            self.$.productViewer.set('view', productType.$.views.at(0));
+                            self.$.set('currentView', productType.$.views.at(0));
 			            });
 		            }
 	            });

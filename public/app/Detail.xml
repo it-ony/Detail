@@ -14,7 +14,7 @@
         <sprdData:ImageService/>
     </js:Injection>
 
-    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="2"/>
+    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="10"/>
 
     <h1>Tag!</h1>
 
@@ -24,7 +24,7 @@
         <js:Template name="item">
             <li>
                 {$item.name}
-                <!--<view:productTypeImage productType="{$item}" width="50" height="50"></view:productTypeImage>-->
+                <sprdView:ProductTypeImage productType="{$item}" width="50" height="50"/>
             </li>
         </js:Template>
     </ui:SelectionView>
@@ -35,7 +35,8 @@
     <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>
     <sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"/>
 
-    <sprdView:ProductViewer cid="productViewer" product="{product}"/>
+    <sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>
+    <sprdView:ProductViewSelector product="{product}" selectedItem="{{currentView}}"/>
 
     <!--<sprdView:ProductViewSelector product="{product}"/>-->
 
