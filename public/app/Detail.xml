@@ -16,8 +16,6 @@
 
     <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="10"/>
 
-    <h1>Tag!</h1>
-
     <a onclick="showSelected">Show Selected</a>
 
     <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}">

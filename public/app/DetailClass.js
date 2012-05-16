@@ -23,9 +23,12 @@ define(
                         self.$.product.set('productType', evt.$);
 
                         evt.$.fetch(null, function(err, productType) {
+	                        if (err) {
+		                        return console.log(err);
+	                        }
 				            self.$.colorSelector.set('productType', productType);
                             self.$.sizeSelector.set('productType', productType);
-                            self.$.set('currentView', productType.$.views.at(0));
+                            self.set('currentView', productType.$.views.at(0));
 			            });
 		            }
 	            });
