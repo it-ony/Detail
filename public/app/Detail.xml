@@ -5,7 +5,6 @@
                  xmlns:app="app"
                  xmlns:data="js.data"
                  xmlns:sprdData="sprd.data"
-                 xmlns:view="app.view"
                  xmlns:sprdView="sprd.view">
 
     <js:Injection cid="injection">
@@ -14,9 +13,7 @@
         <sprdData:ImageService/>
     </js:Injection>
 
-    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="10"/>
-
-    <a onclick="showSelected">Show Selected</a>
+    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="3"/>
 
     <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}">
         <js:Template name="item">
@@ -35,7 +32,5 @@
 
     <sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>
     <sprdView:ProductViewSelector product="{product}" selectedItem="{{currentView}}"/>
-
-    <!--<sprdView:ProductViewSelector product="{product}"/>-->
 
 </app:DetailClass>
