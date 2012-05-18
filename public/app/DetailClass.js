@@ -3,6 +3,10 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
         return Application.inherit({
 
+            ctor: function() {
+                this.callBase();
+            },
+
             initialize: function () {
 
                 var self = this;
@@ -16,15 +20,15 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
                 this.bind('change:selectedProductType', function (evt) {
                     if (evt.$) {
-//                        self.$.colorSelector.set('productType', null);
-//                        self.$.sizeSelector.set('productType', null);
-//                        self.$.product.set('productType', evt.$);
+                        self.$.colorSelector.set('productType', null);
+                        self.$.sizeSelector.set('productType', null);
+                        self.$.product.set('productType', evt.$);
 
                         evt.$.fetch(null, function (err, productType) {
                             if (!err) {
-//                                self.$.colorSelector.set('productType', productType);
-//                                self.$.sizeSelector.set('productType', productType);
-//                                self.set('currentView', productType.$.views.at(0));
+                                self.$.colorSelector.set('productType', productType);
+                                self.$.sizeSelector.set('productType', productType);
+                                self.set('currentView', productType.get('views[0]'));
                             }
                         });
                     }
@@ -55,6 +59,11 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
                     })
                     .seq(function (cb) {
                         self.$.productTypePage.showPage(0, cb);
+                    })
+                    .seq(function(){
+                        if (shop.$.productTypes.size() > 0) {
+                            self.set('selectedProductType', shop.$.productTypes.at(0));
+                        }
                     })
                     .exec(function (err, res) {
 

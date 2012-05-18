@@ -13,32 +13,39 @@
         <sprdData:ImageService/>
     </js:Injection>
 
-    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="3"/>
+    <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="6"/>
 
-    <h1>DetailView</h1>
+    <div class="detail-page">
 
-    <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}">
-        <js:Template name="item">
-            <li>
-                {$item.name}
-                <sprdView:ProductTypeImage productType="{$item}" width="50" height="50"/>
-            </li>
-        </js:Template>
-    </ui:SelectionView>
+        <div class="viewer">
+            <sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>
+            <sprdView:ProductViewSelector product="{product}" selectedItem="{{currentView}}"
+                    viewWidth="45" viewHeight="45"/>
 
-    <a onclick="prevPage">Prev</a>
-    <a onclick="nextPage">Next</a>
+            <sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}" colorWidth="25"/>
+        </div>
 
-    <ui:ItemsView items="{selectedProductType.views}" tagName="ul">
-        <js:Template name="item">
-            <li>{$item.name}</li>
-        </js:Template>
-    </ui:ItemsView>
+        <div class="product-types">
+            <a onclick="prevPage" class="previous-page" title="previous page"/>
 
-    <!--<sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>-->
-    <!--<sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"/>-->
+            <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}"
+                    class="product-type-selector">
+                <js:Template name="item">
+                    <li>
+                        <sprdView:ProductTypeImage productType="{$item}" width="50" height="50" alt="{$item.name}"/>
+                        <span>{$item.name}</span>
+                    </li>
+                </js:Template>
+            </ui:SelectionView>
 
-    <!--<sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>-->
-    <!--<sprdView:ProductViewSelector product="{product}" selectedItem="{{currentView}}"/>-->
+            <a onclick="nextPage" class="next-page" title="next page"/>
+        </div>
+
+
+        <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>
+
+
+    </div>
+
 
 </app:DetailClass>
