@@ -1,6 +1,5 @@
-define(
-    ["js/core/Application", "js/data/Model", "flow", "sprd/model/Product"],
-    function (Application, Model, flow, Product) {
+define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop"],
+    function (Application, Model, flow, Product, Shop) {
 
         return Application.inherit({
 
@@ -17,14 +16,16 @@ define(
 
                 this.bind('change:selectedProductType', function (evt) {
                     if (evt.$) {
-                        self.$.colorSelector.set('productType', null);
-                        self.$.sizeSelector.set('productType', null);
-                        self.$.product.set('productType', evt.$);
+//                        self.$.colorSelector.set('productType', null);
+//                        self.$.sizeSelector.set('productType', null);
+//                        self.$.product.set('productType', evt.$);
 
                         evt.$.fetch(null, function (err, productType) {
-                            self.$.colorSelector.set('productType', productType);
-                            self.$.sizeSelector.set('productType', productType);
-                            self.set('currentView', productType.$.views.at(0));
+                            if (!err) {
+//                                self.$.colorSelector.set('productType', productType);
+//                                self.$.sizeSelector.set('productType', productType);
+//                                self.set('currentView', productType.$.views.at(0));
+                            }
                         });
                     }
                 });
@@ -43,7 +44,7 @@ define(
             start: function (parameter, callback) {
 
                 var self = this,
-                    shop = this.$.api.createModel(Model, parameter.shopId, "Shop");
+                    shop = this.$.api.createEntity(Shop, parameter.shopId);
 
                 this.set('shop', shop);
 

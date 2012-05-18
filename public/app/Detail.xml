@@ -15,6 +15,8 @@
 
     <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="3"/>
 
+    <h1>DetailView</h1>
+
     <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}">
         <js:Template name="item">
             <li>
@@ -27,10 +29,16 @@
     <a onclick="prevPage">Prev</a>
     <a onclick="nextPage">Next</a>
 
-    <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>
-    <sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"/>
+    <ui:ItemsView items="{selectedProductType.views}" tagName="ul">
+        <js:Template name="item">
+            <li>{$item.name}</li>
+        </js:Template>
+    </ui:ItemsView>
 
-    <sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>
-    <sprdView:ProductViewSelector product="{product}" selectedItem="{{currentView}}"/>
+    <!--<sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>-->
+    <!--<sprdView:ColorSelector cid="colorSelector" selectedItem="{{selectedColor}}"/>-->
+
+    <!--<sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>-->
+    <!--<sprdView:ProductViewSelector product="{product}" selectedItem="{{currentView}}"/>-->
 
 </app:DetailClass>
