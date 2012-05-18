@@ -50,16 +50,11 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
                 flow()
                     .seq(function (cb) {
-
                         // fetch shop
                         shop.fetch(null, cb);
-                        console.log(0);
-
                     })
                     .seq(function (cb) {
-
                         self.$.productTypePage.showPage(0, cb);
-
                     })
                     .exec(function (err, res) {
 
