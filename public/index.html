@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Detail</title>
+    <!--TODO: remove hard dependency -->
     <script type="text/javascript" src="sprd/lib/raphael.js"></script>
 
     <script type="text/javascript" src="js/lib/require.js"></script>
@@ -15,6 +16,8 @@
             return window.Raphael;
         });
     </script>
+
+    <link rel="stylesheet" type="text/css" href="app/css/styles.css" media="all">
 
     <meta name="fragment" content="!">
 
@@ -30,6 +33,7 @@
             function (err, systemManager, application) {
                 if (!err) {
                     application.start({
+                        <!--dynamically add shopId -->
                         shopId: 205909
                     }, function (err) {
                         if (!err) {
