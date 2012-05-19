@@ -89,8 +89,22 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
                 img.onload = function() {
                     console.log(this.width, this.height);
 
-                    var configuration = new DesignConfiguration();
-                    self.get('product.configurations').add(configuration)
+                    if (self.$.currentView) {
+                        var targetPrintArea = self.$.currentView.getDefaultPrintArea();
+                        if (targetPrintArea) {
+                            var configuration = new DesignConfiguration();
+
+                            configuration.$.width = this.width;
+                            configuration.$.height = this.height;
+                            configuration.printArea = targetPrintArea;
+                            configuration.$.url = img.src;
+
+                            self.get('product.configurations').add(configuration)
+                        }
+                    }
+
+
+
                 };
 
                 img.src = this.$systemManager.$parameter.designUrl;
