@@ -1,5 +1,5 @@
-define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop"],
-    function (Application, Model, flow, Product, Shop) {
+define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/model/Configuration"],
+    function (Application, Model, flow, Product, Shop, Configuration) {
 
         return Application.inherit({
 
@@ -80,6 +80,10 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
             prevPage: function () {
                 this.$.productTypePage.previousPage();
+            },
+
+            addConfiguration: function() {
+                this.get('product.configurations').add(new Configuration)
             }
         });
     }

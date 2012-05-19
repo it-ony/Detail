@@ -32,8 +32,7 @@
                     class="product-type-selector">
                 <js:Template name="item">
                     <li>
-                        <sprdView:ProductTypeImage productType="{$item}" width="50" height="50" alt="{$item.name}"/>
-                        <span>{$item.name}</span>
+                        <sprdView:ProductTypeImage productType="{$item}" width="50" height="50" alt="${$item.name}"/>
                     </li>
                 </js:Template>
             </ui:SelectionView>
@@ -41,10 +40,17 @@
             <a onclick="nextPage" class="next-page" title="next page"/>
         </div>
 
+        <div class="info">
+            <h1>{selectedProductType.name}</h1>
+            <p>{selectedProductType.description}</p>
+        </div>
 
         <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>
 
+    </div>
 
+    <div class="debug">
+        <a onclick="addConfiguration">Add Configuration</a>
     </div>
 
 
