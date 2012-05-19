@@ -22,10 +22,9 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
                     if (evt.$) {
                         self.$.colorSelector.set('productType', null);
                         self.$.sizeSelector.set('productType', null);
-                        self.$.product.set('productType', evt.$);
-
                         evt.$.fetch(null, function (err, productType) {
                             if (!err) {
+                                self.$.product.set('productType', productType);
                                 self.$.colorSelector.set('productType', productType);
                                 self.$.sizeSelector.set('productType', productType);
                                 self.set('currentView', productType.get('views[0]'));
