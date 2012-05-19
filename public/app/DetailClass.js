@@ -1,5 +1,5 @@
-define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/model/Configuration"],
-    function (Application, Model, flow, Product, Shop, Configuration) {
+define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/entity/DesignConfiguration"],
+    function (Application, Model, flow, Product, Shop, DesignConfiguration) {
 
         return Application.inherit({
 
@@ -83,7 +83,20 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
             },
 
             addConfiguration: function() {
-                this.get('product.configurations').add(new Configuration)
+
+                var img = this.$systemManager.$document.createElement('img'),
+                    self = this;
+
+                img.onload = function() {
+                    console.log(this.width, this.height);
+
+                    var configuration = new DesignConfiguration();
+                    self.get('product.configurations').add(configuration)
+                };
+
+                img.src = this.$systemManager.$parameter.designUrl;
+
+
             }
         });
     }

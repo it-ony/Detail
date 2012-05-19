@@ -50,7 +50,7 @@
     </div>
 
     <div class="debug">
-        <a onclick="addConfiguration">Add Configuration</a>
+        <a onclick="addConfiguration">Add Image</a>
     </div>
 
 
