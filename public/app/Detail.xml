@@ -26,10 +26,10 @@
         </div>
 
         <div class="product-types">
-            <a onclick="prevPage" class="previous-page" title="previous page"/>
+            <a onclick="prevPage" class="previous-page" title="previous page" visible="{productTypePage.hasPreviousPage()}"/>
 
             <ui:SelectionView items="{productTypePage.list}" tagName="ul" selectedItem="{{selectedProductType}}"
-                    class="product-type-selector">
+                    class="product-type-selector" needsSelection="true">
                 <js:Template name="item">
                     <li>
                         <sprdView:ProductTypeImage productType="{$item}" width="50" height="50" alt="${$item.name}"/>
@@ -37,7 +37,7 @@
                 </js:Template>
             </ui:SelectionView>
 
-            <a onclick="nextPage" class="next-page" title="next page"/>
+            <a onclick="nextPage" class="next-page" title="next page" visible="{productTypePage.hasNextPage()}"/>
         </div>
 
         <div class="info">
