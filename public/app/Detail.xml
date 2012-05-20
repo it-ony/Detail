@@ -15,7 +15,7 @@
 
     <data:PagedDataView cid="productTypePage" baseList="{shop.productTypes}" pageSize="6"/>
 
-    <div class="detail-page">
+    <div class="detail-page panel">
 
         <div class="viewer">
             <sprdView:ProductViewer cid="productViewer" product="{product}" view="{currentView}"/>
@@ -47,6 +47,11 @@
 
         <sprdView:SizeSelector cid="sizeSelector" selectedItem="{{selectedSize}}"/>
 
+    </div>
+
+    <div class="upload panel">
+        <h2>Image Upload</h2>
+        <sprdView:ImageUpload />
     </div>
 
     <div class="debug">

@@ -5,7 +5,16 @@ body {
     line-height: 1em;
 }
 
-.detail-page {
+body > div {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.panel {
+    position: relative;
     width: 400px;
     padding: 20px;
     background: white;
@@ -13,8 +22,12 @@ body {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
 }
 
-.info h1 {
+h1 {
     font-size: 12pt;
+}
+
+h2 {
+    font-size: 11pt;
 }
 
 .info p {
@@ -112,7 +125,7 @@ body {
 }
 
 .product-types .previous-page.hidden,
-.product-types .next-page.hidden{
+.product-types .next-page.hidden {
     opacity: 0.3;
 }
 
@@ -139,3 +152,61 @@ body {
     display: none;
 }
 
+.panel > h2 {
+    margin: 0;
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    color: lightgray;
+}
+
+.upload {
+    position: absolute;
+    top: 0;
+    left: 450px;
+    width: 338px;
+}
+
+.image-upload {
+    height: 300px;
+    background: #F0F0F0;
+    border: 1px solid #DDD;
+    position: relative;
+}
+
+.image-upload ul {
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    height: 320px;
+}
+
+.upload .upload-notice {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.image-upload li {
+    border: 1px solid #EBEBEB;
+    margin: 2px;
+    padding: 3px;
+    background: white;
+    float: left;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 97px;
+}
+
+.image-upload img {
+    vertical-align: middle;
+    max-width: 100px;
+    max-height: 100px;
+}
