@@ -5,7 +5,8 @@
         "inherit": "js/lib/inherit",
         "underscore": "js/lib/underscore",
         "flow": "js/lib/flow",
-        "raw": "js/plugins/raw"
+        "raw": "js/plugins/raw",
+        "JSON": "js/lib/json2.js"
     },
     "shim": {
         "inherit": {
@@ -16,6 +17,9 @@
         },
         "underscore": {
             "exports": "_"
+        },
+        "JSON": {
+            "exports": "JSON"
         },
         "app/lib/highlight/highlight": {
             "exports": "hljs"
