@@ -1,5 +1,5 @@
-define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/entity/DesignConfiguration"],
-    function (Application, Model, flow, Product, Shop, DesignConfiguration) {
+define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/entity/DesignConfiguration", "sprd/entity/TextConfiguration"],
+    function (Application, Model, flow, Product, Shop, DesignConfiguration, TextConfiguration) {
 
         return Application.inherit({
 
@@ -17,6 +17,7 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
                 this.set('selectedColor', null);
                 this.set('product', new Product());
                 this.set('currentView', null);
+                this.set('textConfiguration', null);
 
                 this.bind('change:selectedProductType', function (evt) {
                     if (evt.$) {
@@ -81,6 +82,24 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
                 this.$.productTypePage.previousPage();
             },
 
+            addText: function() {
+
+                var targetPrintArea = this.get("currentView.getDefaultPrintArea()");
+                if (targetPrintArea) {
+                    var configuration = new TextConfiguration();
+                    configuration.set({
+                        text: "foo bar",
+                        printArea: targetPrintArea,
+                        font: "cutter"
+                    });
+
+                    this.get('product.configurations').add(configuration);
+                    this.set('textConfiguration', configuration);
+                }
+
+
+            },
+
             addConfiguration: function() {
 
                 var img = this.$systemManager.$document.createElement('img'),
@@ -96,7 +115,7 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
                             configuration.$.width = this.width;
                             configuration.$.height = this.height;
-                            configuration.printArea = targetPrintArea;
+                            configuration.$.printArea = targetPrintArea;
                             configuration.$.url = img.src;
 
                             self.get('product.configurations').add(configuration)
