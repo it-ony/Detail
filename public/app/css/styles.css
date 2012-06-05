@@ -160,10 +160,17 @@ h2 {
     color: lightgray;
 }
 
-.upload {
+.texttool {
     position: absolute;
     top: 0;
     left: 450px;
+    width: 300px;
+}
+
+.upload {
+    position: absolute;
+    top: 0;
+    left: 800px;
     width: 338px;
 }
 
