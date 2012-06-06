@@ -19,6 +19,7 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
                 this.set('currentView', null);
                 this.set('textConfiguration', null);
                 this.set('x', 25);
+                this.set('y', 25);
 
                 this.bind('change:selectedProductType', function (evt) {
                     if (evt.$) {
