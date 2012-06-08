@@ -218,7 +218,14 @@ h2 {
     max-height: 100px;
 }
 
+rect {
+    fill: none;
+}
 
+.print-area-border {
+    stroke: #000;
+    stroke-width: 1px;
+}
 image {
-    opacity: 0.5;
+
 }
