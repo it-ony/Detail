@@ -61,21 +61,6 @@
         <sprdView:ImageUpload />
     </div>
 
-    <div class="debug">
-        <a onclick="addConfiguration">Add Image</a>
-        <input value="{{x}}" type="number"/>
-        <input value="{{y}}" type="number"/>
-        <textarea rows="3" cols="3">{{x}}</textarea>
-    </div>
-
-    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 {x} 100 100" height="200" width="200">
-        <g transform="translate({x} {y})">
-            <rect x="0" y="0" height="50" width="50" xlink:href="foo"/>
-            <rect x="50" y="50" height="50" width="50"/>
-        </g>
-    </svg>
-
     <a onclick="showWindow">Show Modal</a>
-
 
 </app:DetailClass>

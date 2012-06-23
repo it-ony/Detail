@@ -136,7 +136,10 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
             showWindow: function() {
 
                 var window = this.createComponent(Checkout);
-                window.show();
+                window.showModal(function(window, windowState) {
+                    // window got closed
+                    alert('window closed');
+                });
 
             }
         });
