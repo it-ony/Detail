@@ -1,5 +1,5 @@
-define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/entity/DesignConfiguration", "sprd/entity/TextConfiguration"],
-    function (Application, Model, flow, Product, Shop, DesignConfiguration, TextConfiguration) {
+define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "sprd/model/Shop", "sprd/entity/DesignConfiguration", "sprd/entity/TextConfiguration", "xaml!app/view/Checkout"],
+    function (Application, Model, flow, Product, Shop, DesignConfiguration, TextConfiguration, Checkout) {
 
         return Application.inherit({
 
@@ -130,6 +130,13 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
                 img.src = this.$stage.$parameter.designUrl;
 
+
+            },
+
+            showWindow: function() {
+
+                var window = this.createComponent(Checkout);
+                window.show();
 
             }
         });

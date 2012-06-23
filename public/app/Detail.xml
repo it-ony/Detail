@@ -6,7 +6,7 @@
                  xmlns:data="js.data"
                  xmlns:sprdData="sprd.data"
                  xmlns:sprdView="sprd.view"
-                 xmlns:xlink= "http://www.w3.org/1999/xlink">
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:view="app.view">
 
     <js:Injection cid="injection">
         <sprdData:SprdApiDataSource cid="api"
@@ -73,8 +73,9 @@
             <rect x="0" y="0" height="50" width="50" xlink:href="foo"/>
             <rect x="50" y="50" height="50" width="50"/>
         </g>
-
     </svg>
+
+    <a onclick="showWindow">Show Modal</a>
 
 
 </app:DetailClass>

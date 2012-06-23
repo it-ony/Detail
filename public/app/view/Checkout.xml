@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<js:Window xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:js="js.core"
+                 xmlns:ui="js.ui"
+                 xmlns:app="app"
+                 xmlns:data="js.data"
+                 xmlns:sprdData="sprd.data"
+                 xmlns:sprdView="sprd.view"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <h1>Modal Window</h1>
+
+    <p>
+        Even more cool stuff, maybe a form.
+    </p>
+
+</js:Window>
