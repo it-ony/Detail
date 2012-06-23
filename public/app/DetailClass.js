@@ -104,7 +104,7 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
             addConfiguration: function() {
 
-                var img = this.$systemManager.$document.createElement('img'),
+                var img = this.$stage.$document.createElement('img'),
                     self = this;
 
                 img.onload = function() {
@@ -128,7 +128,7 @@ define(["js/core/Application", "js/data/Model", "flow", "sprd/model/Product", "s
 
                 };
 
-                img.src = this.$systemManager.$parameter.designUrl;
+                img.src = this.$stage.$parameter.designUrl;
 
 
             }
