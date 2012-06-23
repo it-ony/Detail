@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<js:Window xmlns="http://www.w3.org/1999/xhtml"
-                 xmlns:js="js.core"
+<js:Window xmlns="http://www.w3.org/1999/xhtml" xmlns:js="js.core" class="foo"
                  xmlns:ui="js.ui"
                  xmlns:app="app"
                  xmlns:data="js.data"
@@ -13,5 +12,7 @@
     <p>
         Even more cool stuff, maybe a form.
     </p>
+
+    <a onclick="close">Close</a>
 
 </js:Window>
