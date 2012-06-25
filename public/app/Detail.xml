@@ -61,6 +61,10 @@
         <sprdView:ImageUpload />
     </div>
 
+    <js:Content>
+        <view:Checkout cid="checkout" />
+    </js:Content>
+
     <a onclick="showWindow">Show Modal</a>
 
 </app:DetailClass>
