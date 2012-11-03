@@ -33,7 +33,7 @@
                     class="product-type-selector" needsSelection="true">
                 <js:Template name="item">
                     <li>
-                        <sprdView:ProductTypeImage productType="{$item}" width="50" height="50" alt="${$item.name}"/>
+                        <sprdView:ProductTypeImage productType="{item}" width="50" height="50" alt="${item.name}"/>
                     </li>
                 </js:Template>
             </ui:SelectionView>
