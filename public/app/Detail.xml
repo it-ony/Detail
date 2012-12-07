@@ -11,6 +11,13 @@
     <js:Injection cid="injection">
         <sprdData:SprdApiDataSource cid="api"
                                     endPoint="http://api.spreadshirt.net/api" gateway="api/v1"/>
+
+        <sprdData:ImageServerDataSource
+                cid="imageServer" gateway="image-server/v1"
+                endPoint="http://image.spreadshirt.net/image-server/v1"
+                apiKey="2b065dd3-88b7-44a8-87fe-e564ed27f904"
+                secret="51616615-0bb1-471e-93f5-fe19022049ef"/>
+
         <sprdData:ImageService/>
     </js:Injection>
 
